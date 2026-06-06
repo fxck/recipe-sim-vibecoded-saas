@@ -1,0 +1,31 @@
+#zeropsPreprocessor=on
+
+# Development environment. Stripe runs in test mode here, but the keys still
+# can't be machine-generated — you paste your own test keys when the recipe
+# wizard prompts. APP_KEY is generated automatically and never prompts.
+project:
+  name: billbird-dev
+  envVariables:
+    APP_KEY: <@generateRandomString(<32>)>
+
+services:
+  - hostname: app
+    type: nodejs@22
+    zeropsSetup: dev
+    buildFromGit: https://github.com/fxck/recipe-vibecoded-saas
+    enableSubdomainAccess: true
+    envSecrets:
+      # null value => the recipe wizard prompts for it before import.
+      # Key name matches the SECRET pattern, so the field is masked.
+      STRIPE_SECRET_KEY:
+      # Seeds the first admin login. Human-known, so it can't be generated.
+      ADMIN_PASSWORD:
+    verticalAutoscaling:
+      minRam: 0.25
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.25

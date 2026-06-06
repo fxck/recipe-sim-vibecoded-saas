@@ -1,0 +1,41 @@
+#zeropsPreprocessor=on
+
+# Production environment. Demonstrates the full secret taxonomy the config
+# wizard understands:
+#   - generated   (<@generateRandomString>) — filled by the backend, never asked
+#   - required    (null value)              — human-only, wizard prompts + blocks deploy
+#   - optional    ("" value)                — intentionally blank, never prompted
+project:
+  name: billbird-production
+  envVariables:
+    # Machine-generated session/encryption key — resolved at import, no prompt.
+    APP_KEY: <@generateRandomString(<32>)>
+    # Intentionally blank: set it later once you know your domain. "" => not
+    # prompted (vs a bare null, which would be).
+    BASE_URL: ""
+
+services:
+  - hostname: app
+    type: nodejs@22
+    zeropsSetup: prod
+    buildFromGit: https://github.com/fxck/recipe-vibecoded-saas
+    enableSubdomainAccess: true
+    minContainers: 2
+    envSecrets:
+      # --- required (null) → wizard prompts, deploy blocked until filled ---
+      STRIPE_SECRET_KEY:
+      STRIPE_WEBHOOK_SECRET:
+      ADMIN_PASSWORD:
+      # --- optional ("") → never prompted; safe to leave blank ---
+      STRIPE_PUBLISHABLE_KEY: ""
+    verticalAutoscaling:
+      minRam: 0.5
+      minFreeRamGB: 0.25
+
+  - hostname: db
+    type: postgresql@18
+    priority: 10
+    mode: NON_HA
+    verticalAutoscaling:
+      minRam: 0.5
+      minFreeRamGB: 0.25
