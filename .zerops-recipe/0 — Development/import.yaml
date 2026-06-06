@@ -12,7 +12,7 @@ services:
   - hostname: app
     type: nodejs@22
     zeropsSetup: dev
-    buildFromGit: https://github.com/fxck/recipe-vibecoded-saas
+    buildFromGit: https://github.com/fxck/recipe-sim-vibecoded-saas
     enableSubdomainAccess: true
     envSecrets:
       # null value => the recipe wizard prompts for it before import.

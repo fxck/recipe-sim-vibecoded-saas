@@ -18,7 +18,7 @@ services:
   - hostname: app
     type: nodejs@22
     zeropsSetup: prod
-    buildFromGit: https://github.com/fxck/recipe-vibecoded-saas
+    buildFromGit: https://github.com/fxck/recipe-sim-vibecoded-saas
     enableSubdomainAccess: true
     minContainers: 2
     envSecrets:

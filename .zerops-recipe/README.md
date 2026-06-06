@@ -6,12 +6,12 @@ A small subscription-billing SaaS I vibecoded — [Node.js](https://nodejs.org) 
 
 ⬇️ **Full recipe page and deploy with one-click**
 
-[![Deploy on Zerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/deploy-button/light/deploy-button.svg)](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-vibecoded-saas&yaml=production)
+[![Deploy on Zerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/deploy-button/light/deploy-button.svg)](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-vibecoded-saas&yaml=production)
 
 Unlike a one-click utility, this app needs **secrets only a human can supply** — your Stripe keys and an admin password. The recipe declares those as `null` values in the import yaml, so the deploy flow **pauses and asks for them** (the config wizard) before importing. Machine-generatable secrets (like `APP_KEY`) are filled automatically and never prompt.
 
-- **Development** [[info]](/0%20%E2%80%94%20Development) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-vibecoded-saas&yaml=development)
-- **Production** [[info]](/1%20%E2%80%94%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-vibecoded-saas&yaml=production)
+- **Development** [[info]](/0%20%E2%80%94%20Development) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-vibecoded-saas&yaml=development)
+- **Production** [[info]](/1%20%E2%80%94%20Production) — [[deploy with one click]](https://app.zerops.io/recipes/detail?github=https://github.com/fxck/recipe-sim-vibecoded-saas&yaml=production)
 
 ## Take-over guide
 
